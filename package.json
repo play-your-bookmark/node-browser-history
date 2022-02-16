@@ -1,6 +1,6 @@
 {
-  "name": "node-browser-history",
-  "version": "2.4.6",
+  "name": "90crew-node-browser-history",
+  "version": "0.0.1",
   "description": "This application aims to retrieve browser history from all browsers on the user's computer. It will attempt to read from some common locations.",
   "main": "index.js",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MyOutDeskLLC/node-browser-history.git"
+    "url": "git+https://github.com/MyOutDeskLLC/90crew-node-browser-history.git"
   },
   "keywords": [
     "browser",
@@ -29,9 +29,9 @@
   "author": "Lance Thompson",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MyOutDeskLLC/node-browser-history/issues"
+    "url": "https://github.com/MyOutDeskLLC/90crew-node-browser-history/issues"
   },
-  "homepage": "https://github.com/MyOutDeskLLC/node-browser-history#readme",
+  "homepage": "https://github.com/MyOutDeskLLC/90crew-node-browser-history#readme",
   "dependencies": {
     "sqlite-async": "github:tance77/sqlite-async",
     "uuid": "^8.1.0"

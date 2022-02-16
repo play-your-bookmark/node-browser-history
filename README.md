@@ -1,3 +1,8 @@
+# 90crew Fork Version
+크롬 브라우저 한정 (getChromeHistory only)
+윈도우, 맥 환경으로 한정
+
+필요한 기능만 추려내어 용량을 줄인 node-browser-history의 fork 버전입니다.
 # node-browser-history
 
 This module will gather browser history from common internet browsers. Given a time frame.
