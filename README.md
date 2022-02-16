@@ -26,6 +26,7 @@ const dateISOString = date.toISOString();
 
 history.getChromeHistory(20, dateISOString).then(history => {
             console.log(history);
+}
 ```
 
 # ---------------------------------------------------------------------------------
