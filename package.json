@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/MyOutDeskLLC/90crew-node-browser-history#readme",
   "dependencies": {
-    "sqlite-async": "github:tance77/sqlite-async",
+    "sqlite-async": "github.com/fhellwig/90crew-sqlite-async",
     "uuid": "^8.1.0"
   }
 }
