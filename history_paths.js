@@ -4,7 +4,6 @@ const os = require("os");
 const homeDirectory = process.env.HOME;
 
 function setupForMac(defaultPaths) {
-    console.log(os.userInfo());
   defaultPaths.chrome = Path.join(
     homeDirectory,
     "Library",
