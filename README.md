@@ -1,8 +1,35 @@
 # 90crew Fork Version
-크롬 브라우저 한정 (getChromeHistory only)
-윈도우, 맥 환경으로 한정
 
-필요한 기능만 추려내어 용량을 줄인 node-browser-history의 fork 버전입니다.
+| Browser         | Windows | Mac | Linux |
+| --------------- | ------- | --- | ----- |
+| Google Chrome   | ✅      | ✅   |       |
+| Maxthon         | -       |     | -     |
+| Microsoft Edge  |         |     | -     |
+| Mozilla Firefox |         |     |       |
+| Opera           |         |     | -     |
+| Seamonkey       |         |     | -     |
+| Torch           |         | -   | -     |
+| Vivaldi         | -       |     | -     |
+| Brave           |         |     | -     |
+| Avast Browser   |         |     | -     |
+
+* 크롬 브라우저 한정 (getChromeHistory only)
+* 윈도우/맥 환경으로 한정
+
+용도에 맞게 크롬 브라우저, 윈도우/맥 환경으로 제한하여 패키지의 용량을 줄인 node-browser-history의 fork 버전입니다.
+
+# How to Use
+
+```javascript
+const date = new Date();
+const dateISOString = date.toISOString();
+
+history.getChromeHistory(20, dateISOString).then(history => {
+            console.log(history);
+```
+
+# ---------------------------------------------------------------------------------
+
 # node-browser-history
 
 This module will gather browser history from common internet browsers. Given a time frame.

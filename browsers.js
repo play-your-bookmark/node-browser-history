@@ -1,45 +1,15 @@
-const Path =  require('path')
+const Path = require("path");
 const fs = require("fs");
-const { setupDefaultPaths: setupPaths } = require('./history_paths');
+const { setupDefaultPaths: setupPaths } = require("./history_paths");
 
-const CHROME = "Google Chrome",
-    FIREFOX = "Mozilla Firefox",
-    TORCH = "Torch",
-    OPERA = "Opera",
-    SEAMONKEY = "SeaMonkey",
-    VIVALDI = "Vivaldi",
-    SAFARI = "Safari",
-    MAXTHON = "Maxthon",
-    EDGE = "Microsoft Edge",
-    BRAVE = "Brave",
-    AVAST = "AVAST Browser";
+const CHROME = "Google Chrome";
 
-let browserDbLocations = {
-    chrome: "",
-    firefox: "",
-    opera: "",
-    edge: "",
-    torch: "",
-    seamonkey: "",
-    vivaldi: "",
-    maxthon: "",
-    safari: "",
-    brave: "",
-    avast: ""
+const browserDbLocations = {
+  chrome: "",
 };
 
-let defaultPaths = {
-    chrome: "",
-    firefox: "",
-    opera: "",
-    edge: "",
-    torch: "",
-    seamonkey: "",
-    vivaldi: "",
-    maxthon: "",
-    safari: "",
-    brave: "",
-    avast: ""
+const defaultPaths = {
+  chrome: "",
 };
 
 setupPaths(defaultPaths);
@@ -54,40 +24,36 @@ setupPaths(defaultPaths);
  * @return {Array}               Result files with path string in an array
  */
 function findFilesInDir(startPath, filter, targetFile, depth = 0) {
-    if(depth === 4){
-        return [];
-    }
-    let results = [];
-    if (!fs.existsSync(startPath)) {
-        //console.log("no dir ", startPath);
-        return results;
-    }
-    let files = fs.readdirSync(startPath);
-    for (let i = 0; i < files.length; i++) {
-        let filename = Path.join(startPath, files[i]);
-        if (!fs.existsSync(filename)) {
-            // console.log('file doesn\'t exist ', startPath);
-            continue;
-        }
-        let stat = fs.lstatSync(filename);
-        if (stat.isDirectory()) {
-            results = results.concat(findFilesInDir(filename, filter, targetFile, depth + 1)); //recurse
-        } else if(filename.endsWith(targetFile) === true) {
-            // console.log('-- found: ', filename);
-            results.push(filename);
-        }
-        /*
-        } else if (filename.indexOf(filter) >= 0 && regExp.test(filename)) {
-            results.push(filename);
-        } else if (filename.endsWith('\\History') === true) {
-            // console.log('-- found: ', filename);
-            results.push(filename);
-        }*/
-    }
+  if (depth === 4) {
+    return [];
+  }
+
+  let results = [];
+
+  if (!fs.existsSync(startPath)) {
     return results;
+  }
+
+  const files = fs.readdirSync(startPath);
+  for (let i = 0; i < files.length; i++) {
+    const filename = Path.join(startPath, files[i]);
+
+    if (!fs.existsSync(filename)) {
+      // eslint-disable-next-line no-continue
+      continue;
+    }
+
+    const stat = fs.lstatSync(filename);
+
+    if (stat.isDirectory()) {
+      results = results.concat(findFilesInDir(filename, filter, targetFile, depth + 1));
+    } else if (filename.endsWith(targetFile) === true) {
+      results.push(filename);
+    }
+  }
+
+  return results;
 }
-
-
 
 /**
  * Finds the path to the browsers DB file.
@@ -97,41 +63,17 @@ function findFilesInDir(startPath, filter, targetFile, depth = 0) {
  * @returns {Array}
  */
 function findPaths(path, browserName) {
-    switch (browserName) {
-        case FIREFOX:
-        case SEAMONKEY:
-            return findFilesInDir(path, ".sqlite", Path.sep + 'places.sqlite');
-        case CHROME:
-        case TORCH:
-        case OPERA:
-        case BRAVE:
-        case VIVALDI:
-        case EDGE:
-        case AVAST:
-            return findFilesInDir(path, "History", Path.sep + 'History');
-        case SAFARI:
-            return findFilesInDir(path, ".db", Path.sep + 'History.db');
-        case MAXTHON:
-            return findFilesInDir(path, ".dat", Path.sep + 'History.dat');
-        default:
-            return [];
-    }
+  switch (browserName) {
+    case CHROME:
+      return findFilesInDir(path, "History", `${Path.sep}History`);
+    default:
+      return [];
+  }
 }
 
 module.exports = {
-    findPaths,
-    browserDbLocations,
-    defaultPaths,
-    CHROME,
-    FIREFOX,
-    TORCH,
-    OPERA,
-    SEAMONKEY,
-    VIVALDI,
-    SAFARI,
-    MAXTHON,
-    BRAVE,
-    EDGE,
-    AVAST
+  findPaths,
+  browserDbLocations,
+  defaultPaths,
+  CHROME,
 };
-
