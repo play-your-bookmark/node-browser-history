@@ -1,6 +1,6 @@
 {
   "name": "90crew-node-browser-history",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This application aims to retrieve browser history from all browsers on the user's computer. It will attempt to read from some common locations.",
   "main": "index.js",
   "scripts": {
